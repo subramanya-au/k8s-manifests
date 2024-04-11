@@ -19,7 +19,7 @@ jobs:
         with:
           repository: subramanya-au/webapp
           ref: main
-          token: ${{ secrets.MY_PAT }}
+        #   token: ${{ secrets.MY_PAT }}
 
       - name: Login to Docker Registry
         uses: docker/login-action@v3
