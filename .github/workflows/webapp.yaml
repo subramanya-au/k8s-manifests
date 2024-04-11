@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: subramanya-au/webapp
+          ref: refs/heads/main
           token: ${{ secrets.my_pat }}
 
       - name: Login to Docker Registry
