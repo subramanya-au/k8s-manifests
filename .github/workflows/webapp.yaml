@@ -15,11 +15,10 @@ jobs:
 
     steps:
       - name: Check out my other private repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@master
         with:
           repository: subramanya-au/webapp
-          ref: main
-          token: ${{ secrets.GIT_TOKEN }}
+          token: ${{ secrets.my_pat }}
 
       - name: Login to Docker Registry
         uses: docker/login-action@v3
