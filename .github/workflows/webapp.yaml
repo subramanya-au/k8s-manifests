@@ -15,12 +15,12 @@ jobs:
 
     steps:
       - name: Check out my other private repo
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
         with:
           repository: subramanya-au/webapp
           ref: main
           path: ./docker
-          submodules: recursive
+        #   submodules: recursive
           token: ${{ secrets.my_pat }}
 
       - name: Login to Docker Registry
