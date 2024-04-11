@@ -21,11 +21,11 @@ jobs:
           ref: main
         #   token: ${{ secrets.MY_PAT }}
 
-      - name: Login to Docker Registry
-        uses: docker/login-action@v3
-        with:
-          username: sunil0019
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+    #   - name: Login to Docker Registry
+    #     uses: docker/login-action@v3
+    #     with:
+    #       username: sunil0019
+    #       password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Docker Metadata
         uses: docker/metadata-action@v5
