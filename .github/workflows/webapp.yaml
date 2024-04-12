@@ -2,6 +2,10 @@
 name: web-app-release
 on:
   workflow_call:
+    inputs:
+      IMAGE_NAME:
+        required: true
+        type: string 
     secrets:
       docker_username: 
         required: true
@@ -13,7 +17,6 @@ jobs:
     name: Build Docker Image
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: webapp
       BRANCH_TO_TAG_WITH_LATEST: main
     outputs:
       docker_image: ${{ steps.image_sha.outputs.docker_image }}
@@ -38,7 +41,7 @@ jobs:
         id: meta
         with:
           images: |
-            sunil0019/${{ env.IMAGE_NAME }}
+            sunil0019/${{ inputs.IMAGE_NAME }}
           tags: |
             type=sha
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', env.BRANCH_TO_TAG_WITH_LATEST) }}
@@ -60,7 +63,7 @@ jobs:
       
       - name: Set SHA Image for k8s Deployment Pinning
         id: image_sha
-        run: echo "docker_image=sunil0019/${{ env.IMAGE_NAME }}:sha-${GITHUB_SHA:0:7}" >> $GITHUB_OUTPUT
+        run: echo "docker_image=sunil0019/${{ inputs.IMAGE_NAME }}:sha-${GITHUB_SHA:0:7}" >> $GITHUB_OUTPUT
   
 #   deploy-dev:   
 #     name: Deploy-to-Dev
