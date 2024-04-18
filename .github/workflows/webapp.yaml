@@ -33,6 +33,11 @@ jobs:
           repository: ${{ inputs.repository }}
           ref: main # its a probelm to clone from different feature branches
           token: ${{ secrets.github_pat }}
+      
+      - name: viewing the Dockerfile
+        run: |
+          ls -lart 
+          cat Dockerfile
 
       - name: Login to Docker Registry
         uses: docker/login-action@v3
