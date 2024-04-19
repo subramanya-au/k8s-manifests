@@ -35,17 +35,14 @@ jobs:
           ref: ${{ github.ref_name }}
           token: ${{ secrets.github_pat }}
       
-      - name: viewing the changed files
-        run: |
-          ls -lart
-          cat Dockerfile
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Registry
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.docker_username }}
           password: ${{ secrets.docker_password }}
-
 
       - name: Docker Metadata
         uses: docker/metadata-action@v5
@@ -71,6 +68,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       
       - name: Set SHA Image for k8s Deployment Pinning
         id: image_sha
