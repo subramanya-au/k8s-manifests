@@ -21,7 +21,7 @@ jobs:
   docker-build:
     name: Build Docker Image
     runs-on: ubuntu-latest
-    if: github.ref == 'main' || github.ref == 'dev' || github.ref == 'qual' || github.ref == 'staging'
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev' }}
     env:
       BRANCH_TO_TAG_WITH_LATEST: main
     outputs:
