@@ -36,7 +36,8 @@ jobs:
       
       - name: viewing the changed files
         run: |
-          git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
+          ls -lart
+          cat Dockerfile
 
       - name: Login to Docker Registry
         uses: docker/login-action@v3
