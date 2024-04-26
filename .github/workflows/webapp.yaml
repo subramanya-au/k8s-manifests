@@ -27,8 +27,12 @@ jobs:
     timeout-minutes: 60
     if: ${{ github.ref == 'refs/heads/main' && inputs.environment == 'dev'}}
     steps:
-      - name: Checkout
+      - name: Check out my other private repo
         uses: actions/checkout@v4
+        with:
+          repository: subramanya-au/k8s-manifests
+          ref: main
+          token: ${{ secrets.MY_PAT }}
 
       - name: checking files
         run: |
