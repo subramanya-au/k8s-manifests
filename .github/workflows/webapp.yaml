@@ -32,7 +32,7 @@ jobs:
         with:
           repository: subramanya-au/k8s-manifests
           ref: main
-          token: ${{ secrets.MY_PAT }}
+          token: ${{ secrets.github_pat }}
 
       - name: checking files
         run: |
