@@ -2,6 +2,10 @@
 name: web-app-release
 on:
   workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
     secrets:
       argocd_server: 
         required: true
@@ -18,12 +22,10 @@ jobs:
   deploy-dev:   
     name: Deploy-to-Dev
     runs-on: web-app
-    # needs: 
-    #   - docker-build
     # environment: 
     #   name: dev
     timeout-minutes: 60
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/main' && inputs.environment == 'dev'}}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
