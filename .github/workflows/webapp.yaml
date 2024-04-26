@@ -29,6 +29,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: checking files
+        run: |
+          ls -lart 
       
       - name: ArgoCD Deployment
         run: |
