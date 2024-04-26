@@ -17,15 +17,13 @@ on:
 jobs:
   deploy-dev:   
     name: Deploy-to-Dev
-    runs-on: ubuntu-latest
+    runs-on: web-app
     # needs: 
     #   - docker-build
     # environment: 
     #   name: dev
-    # env:
-    #   environment: dev
     timeout-minutes: 60
-    if: ${{ github.ref == 'refs/heads/main'}}
+    if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
