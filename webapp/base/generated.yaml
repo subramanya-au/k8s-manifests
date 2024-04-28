@@ -14,7 +14,9 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: houssemdocker/webappmonitoring:prometheus
+        image: sunil0019/webapp:latest
+      imagePullSecrets:
+      - name: regcred
         ports:
         - containerPort: 80
 ---
