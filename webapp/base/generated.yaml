@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp
+  name: $APP_NAME
 spec:
   selector:
     matchLabels:
-      app: webapp
+      app: $APP_NAME
   replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: webapp
+        app: $APP_NAME
     spec:
       containers:
-      - name: webapp
-        image: sunil0019/webapp:latest
+      - name: $APP_NAME
+        image: sunil0019/$APP_NAME:latest
       imagePullSecrets:
       - name: regcred
         ports:
@@ -23,10 +23,10 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: webapp-service
+  name: $APP_NAME-service
 spec:
   selector:
-    app: webapp
+    app: $APP_NAME
   ports:
   - protocol: TCP
     port: 80
