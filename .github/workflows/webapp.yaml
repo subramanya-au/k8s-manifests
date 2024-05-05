@@ -57,6 +57,6 @@ jobs:
                                       --path main.yaml --dest-namespace sandbox --dest-server https://kubernetes.default.svc --project default \
                                       --sync-option PruneLast=true --sync-option CreateNamespace=true \
                                       --sync-policy automated \
-                                      --revision ${{ github.sha }} \
+                                      --revision main \
                                       --upsert
   
