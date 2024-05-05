@@ -54,10 +54,12 @@ jobs:
       
           export app_name=${{ inputs.app_name }}
           kustomize build webapp/environments/sandbox | envsubst > main.yaml
-          argocd app create ${{ inputs.app_name }} --repo https://github.com/subramanya-au/k8s-manifests.git \
-                                      --file main.yaml --dest-namespace sandbox --dest-server https://kubernetes.default.svc --project default \
-                                      --sync-option PruneLast=true --sync-option CreateNamespace=true \
-                                      --sync-policy automated \
-                                      --revision main \
-                                      --upsert
+          cat main.yaml
+          
+          # argocd app create ${{ inputs.app_name }} --repo https://github.com/subramanya-au/k8s-manifests.git \
+          #                             --file main.yaml --dest-namespace sandbox --dest-server https://kubernetes.default.svc --project default \
+          #                             --sync-option PruneLast=true --sync-option CreateNamespace=true \
+          #                             --sync-policy automated \
+          #                             --revision main \
+          #                             --upsert
   
