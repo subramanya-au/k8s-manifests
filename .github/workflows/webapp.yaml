@@ -6,6 +6,9 @@ on:
       environment:
         required: true
         type: string
+      app_name:
+        required: true
+        type: string
     secrets:
       argocd_server: 
         required: true
@@ -50,9 +53,8 @@ jobs:
           argocd repo add https://github.com/subramanya-au/k8s-manifests.git --username ${{ secrets.git_username }} --password ${{ secrets.github_pat }} --insecure-skip-server-verification --grpc-web --upsert
       
           #Argocd app create
-          kustomize build webapp/environments/sandbox | envsubst > deployment.yaml
-          argocd app create $APP_NAME -f webapp/environments/sandbox/application.yaml --upsert
-          # argocd app create ${{ env.APP_NAME }} -f deployment.yaml --upsert -n sandbox
+          # kustomize build webapp/environments/sandbox | envsubst > deployment.yaml
+          argocd app create ${{ inputs.app_name }} -f webapp/environments/sandbox/application.yaml --upsert
           
           # #Set Image
           # argocd app set webapp --kustomize-image ${{ needs.continuous-integration.outputs.docker_image }}
