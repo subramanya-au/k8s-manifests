@@ -23,7 +23,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: $APP_NAME-service
+  name: $APP_NAME
 spec:
   selector:
     app: $APP_NAME
