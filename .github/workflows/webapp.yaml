@@ -51,7 +51,7 @@ jobs:
       
           #Argocd app create
           kustomize build webapp/environments/sandbox | envsubst > deployment.yaml
-          argocd app create webapp -f webapp/environments/sandbox/application.yaml --upsert
+          argocd app create $APP_NAME -f webapp/environments/sandbox/application.yaml --upsert
           # argocd app create ${{ env.APP_NAME }} -f deployment.yaml --upsert -n sandbox
           
           # #Set Image
