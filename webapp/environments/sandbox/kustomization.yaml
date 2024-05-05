@@ -1,3 +1,4 @@
 namespace: sandbox
 resources:
   - ../../base
+  - application.yaml
