@@ -54,7 +54,7 @@ jobs:
       
           kustomize build webapp/environments/sandbox | envsubst > main.yaml
           argocd app create ${{ inputs.app_name }} --repo https://github.com/subramanya-au/k8s-manifests.git \
-                                      --path main.yaml --dest-namespace sandbox --dest-server https://kubernetes.default.svc --project default \
+                                      --file main.yaml --dest-namespace sandbox --dest-server https://kubernetes.default.svc --project default \
                                       --sync-option PruneLast=true --sync-option CreateNamespace=true \
                                       --sync-policy automated \
                                       --revision main \
