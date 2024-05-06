@@ -56,5 +56,5 @@ jobs:
           # kustomize build webapp/environments/sandbox | envsubst > main.yaml
           # cat main.yaml
 
-          argocd app create ${{ inputs.app_name }} -f webapp/environments/sandbox/application.yaml --upsert | envsubst
+          argocd app create ${app_name} -f webapp/environments/sandbox/application.yaml --upsert | envsubst
   
