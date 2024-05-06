@@ -66,5 +66,5 @@ jobs:
                                       --sync-option PruneLast=true --sync-option CreateNamespace=true \
                                       --sync-policy automated \
                                       --revision main \
-                                      --upsert
-          argocd app set ${{ inputs.app_name }} --parameter app_name=${{ inputs.app_name }}
+                                      --upsert \
+                                      --parameter app_name=${{ inputs.app_name }}
