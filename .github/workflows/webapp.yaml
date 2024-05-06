@@ -61,7 +61,7 @@ jobs:
 
           # argocd app create ${app_name} -f webapp/environments/sandbox/application.yaml --upsert | envsubst
           
-          argocd app create ${{ inputs.app_name }} --repo https://github.com/${{ inputs.github_url }}.git \
+          argocd app create ${{ inputs.app_name }} --repo https://github.com/subramanya-au/k8s-manifests.git \
                                       --path webapp/environments/sandbox --dest-namespace sandbox --dest-server https://kubernetes.default.svc --project default \
                                       --sync-option PruneLast=true --sync-option CreateNamespace=true \
                                       --sync-policy automated \
