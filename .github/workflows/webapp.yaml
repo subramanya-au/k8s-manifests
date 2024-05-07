@@ -55,16 +55,16 @@ jobs:
           #Argocd repo add
           argocd repo add https://github.com/subramanya-au/k8s-manifests.git --username ${{ secrets.git_username }} --password ${{ secrets.github_pat }} --insecure-skip-server-verification --grpc-web --upsert
       
-          export app_name=${{ inputs.app_name }}
-          kustomize build webapp/environments/sandbox | envsubst > webapp/base/generated.yaml
+          # export app_name=${{ inputs.app_name }}
+          # kustomize build webapp/environments/sandbox | envsubst > main.yaml
           # cat main.yaml 
 
-          # argocd app create ${app_name} -f webapp/environments/sandbox/application.yaml --upsert | envsubst
+          argocd app create ${{ inputs.app_name }} -f webapp/environments/sandbox/application.yaml --upsert | envsubst
           
-          argocd app create ${{ inputs.app_name }} --repo https://github.com/subramanya-au/k8s-manifests.git \
-                                      --path webapp/base --dest-namespace sandbox --dest-server https://kubernetes.default.svc --project default \
-                                      --sync-option PruneLast=true --sync-option CreateNamespace=true \
-                                      --sync-policy automated \
-                                      --revision main \
-                                      --upsert
+          # argocd app create ${{ inputs.app_name }} --repo https://github.com/subramanya-au/k8s-manifests.git \
+          #                             --path webapp/base --dest-namespace sandbox --dest-server https://kubernetes.default.svc --project default \
+          #                             --sync-option PruneLast=true --sync-option CreateNamespace=true \
+          #                             --sync-policy automated \
+          #                             --revision main \
+          #                             --upsert
                                   

@@ -1,4 +1,8 @@
 namespace: sandbox
 resources:
   - ../../base
-  # - application.yaml
+  - application.yaml
+  - configmap.yaml
+
+commonAnnotations:
+  app: testing
